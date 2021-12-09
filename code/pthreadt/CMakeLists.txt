@@ -1,5 +1,5 @@
 # CMakeLists for src directory
-#PROJECT(comm)
+#PROJECT(pthreadt)
 #指定头文件路径
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -9,18 +9,22 @@ include_directories(
 cmake_minimum_required(VERSION 3.20)
 
 #指定库文件
-AUX_SOURCE_DIRECTORY(. COMM_SRCS)
+AUX_SOURCE_DIRECTORY(. PTHREAD_SRCS)
 
 # 编译动态库
-add_library(comm SHARED)
+add_library(pthreadt SHARED)
 
-target_sources(comm
+target_sources(pthreadt
 PRIVATE
-    ${COMM_SRCS}
+    ${PTHREAD_SRCS}
 )
 
-target_include_directories(comm
+set(CMAKE_CXX_FLAGS "${CAMKE_CXX_FLAGS} -std=c++11 -pthread")
+
+target_include_directories(pthreadt
 INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/../rre
 )
+
+

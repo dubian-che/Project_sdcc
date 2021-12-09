@@ -6,9 +6,10 @@
 //#include <sys/typed.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include "rre.h"
+#include "rre_errcode.h"
 
-#define U32 unsigned int
-#define ROK 0
+
 
 class basicComm
 {

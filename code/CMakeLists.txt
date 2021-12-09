@@ -5,13 +5,18 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.2.0)
 PROJECT(PROJECT_CC)
 
 ADD_SUBDIRECTORY(comm)
+ADD_SUBDIRECTORY(pthreadt)
+
 
 include(
     ${CMAKE_CURRENT_SOURCE_DIR}/../cmake_conf/building_output.cmake
     ${CMAKE_CURRENT_SOURCE_DIR}/../cmake_conf/compiler_conf.cmake
 )
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/comm/include)
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/comm/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/pthreadt/include
+)
 
 add_executable(PROJECT_CC)
 
@@ -23,5 +28,6 @@ PRIVATE
 target_link_libraries(PROJECT_CC
 PRIVATE
     comm
+    pthreadt
 )
 
